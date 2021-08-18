@@ -1,0 +1,50 @@
+<mat-sidenav-container fullscreen style="background-color: #32687C;">
+    
+
+    <mat-toolbar style="background-color: #2D596A;">
+        <h3>Administrador</h3>
+
+        <span class="spacer"></span>
+
+        <button mat-button style="margin-left: auto; display: block;" (mousedown)="logout()">
+            Logout
+        </button>
+    </mat-toolbar>
+
+
+    <div class="container">
+        <br>
+        <h1>Listado de héroes</h1>
+        <mat-divider></mat-divider>
+        <br>
+
+        <div fxLayout="row wrap"
+            fxLayout.xs="column"
+            fxLayoutAlign="center"
+            fxLayoutGap="20px">
+
+            <div fxFlex="20"
+                fxFlex.lg="15"
+                fxFlex.sm="30"
+                *ngFor="let heroe of heroes; let i = index;"
+                (mouseenter)="resaltarElemento(i)">
+
+                <mat-card [@slideStatus]="status[i]">
+                    <mat-card-header>
+                        <mat-card-title> {{heroe.alias}} </mat-card-title>
+                        <mat-card-subtitle> {{heroe.nombre}} </mat-card-subtitle>
+                    </mat-card-header>
+                
+                    <img mat-card-image src='../../assets/heroes/{{heroe.img}}'>
+                
+                    <mat-card-content>
+                        <h3>{{heroe.compania}}</h3>
+                    </mat-card-content>
+                
+                </mat-card>
+                <br>
+            </div>
+        </div>
+    </div>
+
+</mat-sidenav-container>
